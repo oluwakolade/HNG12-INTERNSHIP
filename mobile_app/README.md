@@ -12,14 +12,21 @@ A simple Flutter mobile app that links to the GitHub repository and HNG resource
 
 # Installation & Setup
 1. Clone the Repository
+
+```
 git clone https://github.com/oluwakolade/HNG12-INTERNSHIP
 cd HNG12-INTERNSHIP
+```
 
 2. Install Dependencies
+```
 flutter pub get
+```
 
 3. Run the App
+```
 flutter run
+```
 
 
 # Features
