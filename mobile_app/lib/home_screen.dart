@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:mobile_app/services.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Uri githubUrl =
-        Uri.parse('https://github.com/oluwakolade/HNG12-INTERNSHIP');
-    final Uri hngUrl = Uri.parse(
-        'https://www.notion.so/Stage-0-Blog-Post-with-Strategic-Backlinks-for-HNG-Hire-Delve-and-Telex-80a6ed3d3c3d49489769d78b6a23ecda?pvs=21');
-
-    Future<void> _launchUrl(Uri url) async {
-      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-        throw 'Could not launch $url';
-      }
-    }
+    String githubUrl = 'https://github.com/oluwakolade/HNG12-INTERNSHIP';
+    String hngUrl =
+        'https://www.notion.so/Stage-0-Blog-Post-with-Strategic-Backlinks-for-HNG-Hire-Delve-and-Telex-80a6ed3d3c3d49489769d78b6a23ecda';
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +23,7 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Click the buttons bellow to viist the respective sites',
+                'Click the buttons below to viist the respective sites',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
@@ -43,15 +35,17 @@ class MyHomePage extends StatelessWidget {
                   Expanded(
                     child: AppButton(
                         label: 'Github',
-                        onTap: () => _launchUrl(githubUrl),
-                        icon: FontAwesomeIcons.github,
+                        onTap: () async {
+                          await UrlLauncher.openUrl(githubUrl);
+                        },
                         color: Colors.black),
                   ),
                   Expanded(
                     child: AppButton(
                         label: 'HNG Hire Page',
-                        onTap: () => _launchUrl(hngUrl),
-                        icon: FontAwesomeIcons.flutter,
+                        onTap: () async {
+                          await UrlLauncher.openUrl(hngUrl);
+                        },
                         color: Colors.blue),
                   ),
                 ],
@@ -68,12 +62,10 @@ class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final Color color;
-  final IconData icon;
   const AppButton(
       {super.key,
       required this.label,
       required this.onTap,
-      required this.icon,
       required this.color});
 
   @override
@@ -88,7 +80,7 @@ class AppButton extends StatelessWidget {
       ),
       onPressed: onTap,
       icon: Icon(
-        icon,
+        Icons.open_in_browser,
         color: Colors.white,
       ),
       label: Text(
