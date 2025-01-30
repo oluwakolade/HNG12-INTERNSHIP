@@ -7,8 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String githubUrl = 'https://github.com/oluwakolade/HNG12-INTERNSHIP';
-    String hngUrl =
-        'https://www.notion.so/Stage-0-Blog-Post-with-Strategic-Backlinks-for-HNG-Hire-Delve-and-Telex-80a6ed3d3c3d49489769d78b6a23ecda';
+    String hngUrl = 'http://hng.tech/hire/flutter-developers';
 
     return Scaffold(
       appBar: AppBar(
